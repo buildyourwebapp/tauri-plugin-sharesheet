@@ -1,9 +1,10 @@
 {
-  "name": "@tauri-apps/plugin-sharesheet",
+  "name": "tauri-plugin-sharesheet",
   "version": "2.0.0-beta.7",
   "license": "MIT or APACHE-2.0",
   "authors": [
-    "Tauri Programme within The Commons Conservancy"
+    "Matt Gabrenya",
+    "Build Your Web App"
   ],
   "type": "module",
   "types": "./dist-js/index.d.ts",

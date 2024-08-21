@@ -1,0 +1,63 @@
+name: "publish-pacakges"
+on:
+  push: 
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branch: main
+
+jobs:
+  publish-crate-dry-run:
+    runs-on: ubuntu-latest
+            
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - uses: katyo/publish-crates@v2
+        with:
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          dry-run: true
+
+  publish-npm-dry-run:
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - run: npm ci 
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          dry-run: true
+
+  publish-crate:
+    needs: [publish-crate-dry-run, publish-npm-dry-run]
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            override: true
+      - uses: katyo/publish-crates@v2
+        with:
+            registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+  publish-npm:
+    needs: [publish-crate-dry-run, publish-npm-dry-run]
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - run: npm ci
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}

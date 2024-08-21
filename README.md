@@ -20,7 +20,7 @@ Install the Core plugin by adding the following to your `Cargo.toml` file:
 [dependencies]
 tauri-plugin-sharesheet = "2.0.0-beta"
   # alternatively with Git:
-tauri-plugin-sharesheet = { git = "https://github.com/mattyg/tauri-plugin-sharesheet" }
+tauri-plugin-sharesheet = { git = "https://github.com/buildyourwebapp/tauri-plugin-sharesheet" }
 ```
 
 You can install the JavaScript Guest bindings using your preferred JavaScript package manager:
@@ -30,18 +30,18 @@ You can install the JavaScript Guest bindings using your preferred JavaScript pa
 <!-- Add the branch for installations using git! -->
 
 ```sh
-pnpm add tauri-plugin-sharesheet
+pnpm add @buildyourwebapp/tauri-plugin-sharesheet
 # or
-npm add tauri-plugin-sharesheet
+npm add @buildyourwebapp/tauri-plugin-sharesheet
 # or
-yarn add tauri-plugin-sharesheet
+yarn add @buildyourwebapp/tauri-plugin-sharesheet
 
 # alternatively with Git:
-pnpm add https://github.com/mattyg/tauri-plugin-sharesheet#v2
+pnpm add https://github.com/buildyourwebapp/tauri-plugin-sharesheet
 # or
-npm add https://github.com/mattyg/tauri-plugin-sharesheet#v2
+npm add https://github.com/buildyourwebapp/tauri-plugin-sharesheet
 # or
-yarn add https://github.com/mattyg/tauri-plugin-sharesheet#v2
+yarn add https://github.com/buildyourwebapp/tauri-plugin-sharesheet
 ```
 
 ## Usage
@@ -62,7 +62,7 @@ fn main() {
 Afterwards all the plugin's APIs are available through the JavaScript guest bindings:
 
 ```javascript
-import { shareText } from "tauri-plugin-sharesheet";
+import { shareText } from "@buildyourwebapp/tauri-plugin-sharesheet";
 shareText('Tauri is great!');
 ```
 

@@ -11,7 +11,7 @@ It allows acccess to all sharesheet commands.
 
 - `allow-share-text`
 
-### Permission Table 
+## Permission Table 
 
 <table>
 <tr>

@@ -16,7 +16,10 @@
     "require": "./dist-js/index.cjs"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "lint": "eslint .",
+    "format": "prettier --write \"./**/*.{cjs,mjs,js,jsx,mts,ts,tsx,html,css,json}\" --ignore-path .prettierignore",
+    "format-check": "prettier --check \"./**/*.{cjs,mjs,js,jsx,mts,ts,tsx,html,css,json}\" --ignore-path .prettierignore"
   },
   "files": [
     "dist-js",
@@ -26,5 +29,24 @@
   ],
   "dependencies": {
     "@tauri-apps/api": "2.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.9.0",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-terser": "0.4.4",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@types/eslint__js": "8.42.3",
+    "covector": "^0.12.0",
+    "eslint": "9.9.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-security": "3.0.1",
+    "prettier": "3.3.3",
+    "rollup": "4.21.0",
+    "tslib": "2.6.3",
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.1.0"
+  },
+  "engines": {
+    "pnpm": "^9.0.0"
   }
 }

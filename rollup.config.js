@@ -30,10 +30,10 @@ export function createConfig(options = {}) {
   const pkg = JSON.parse(readFileSync(join(cwd(), "package.json"), "utf8"));
 
   const pluginJsName = pkg.name
-    .replace("@tauri-apps/plugin-", "")
+    .replace("@buildyourwebapp/tauri-plugin-", "")
     .replace(/-./g, (x) => x[1].toUpperCase());
   const iifeVarName = `__TAURI_PLUGIN_${pkg.name
-    .replace("@tauri-apps/plugin-", "")
+    .replace("@buildyourwebapp/tauri-plugin-", "")
     .replace("-", (x) => "_")
     .toUpperCase()}__`;
 

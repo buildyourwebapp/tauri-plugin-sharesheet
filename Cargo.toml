@@ -2,10 +2,10 @@
 name = "tauri-plugin-sharesheet"
 version = "2.0.0-beta.1"
 description = "Share content with the Android Sharesheet and iOS Share Pane."
-edition = { workspace = true }
-authors = { workspace = true }
-license = { workspace = true }
-repository = { workspace = true }
+edition = "2021"
+authors = ["Matt Gabrenya", "Build Your Web App", "matt@buildyourweb.app"]
+license = "MIT"
+repository = "https://github.com/buildyourwebapp/tauri-plugin-sharesheet"
 links = "tauri-plugin-sharesheet"
 
 [package.metadata.docs.rs]
@@ -13,12 +13,12 @@ rustc-args = [ "--cfg", "docsrs" ]
 rustdoc-args = [ "--cfg", "docsrs" ]
 
 [build-dependencies]
-tauri-plugin = { workspace = true, features = [ "build" ] }
+tauri-plugin = { version = "2.0.0-rc", features = [ "build" ] }
 
 [dependencies]
-serde = { workspace = true }
-serde_json = { workspace = true }
-tauri = { workspace = true }
-log = { workspace = true }
-thiserror = { workspace = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = "2.0.0-rc"
+log = "0.4"
+thiserror = "1"
 serde_repr = "0.1"

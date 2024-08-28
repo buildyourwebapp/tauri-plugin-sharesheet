@@ -2,13 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-License-Identifier: MIT
 
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
 #[derive(Debug, Default, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct SharesheetOptions {
-  mime_type: Option<String>,
-  title: Option<String>,
-  thumbnail_uri: Option<String>,
+  pub mime_type: Option<String>,
+  pub title: Option<String>,
+  pub thumbnail_uri: Option<String>,
 }
 
+#[derive(Serialize)]
+pub struct SharesheetPayload {
+  pub text: String,
+  #[serde(flatten)]
+  pub options: SharesheetOptions,
+}

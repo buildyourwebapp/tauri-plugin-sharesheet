@@ -4,7 +4,6 @@
 
 #![cfg(mobile)]
 
-use serde::Serialize;
 use tauri::{
     plugin::{Builder, PluginHandle, TauriPlugin},
     Manager, Runtime,
@@ -25,13 +24,6 @@ tauri::ios_plugin_binding!(init_plugin_sharesheet);
 
 /// Access to the sharesheet APIs.
 pub struct Sharesheet<R: Runtime>(PluginHandle<R>);
-
-#[derive(Serialize)]
-struct SharesheetPayload {
-    text: String,
-    #[serde(flatten)]
-    options: SharesheetOptions,
-}
 
 impl<R: Runtime> Sharesheet<R> {
     pub fn share_text(&self, text: String, options: SharesheetOptions) -> crate::Result<()> {

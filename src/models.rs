@@ -9,7 +9,6 @@ use serde::Serialize;
 pub struct SharesheetOptions {
   pub mime_type: Option<String>,
   pub title: Option<String>,
-  pub thumbnail_uri: Option<String>,
 }
 
 #[derive(Serialize)]

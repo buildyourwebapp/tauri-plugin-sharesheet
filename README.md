@@ -1,5 +1,3 @@
-![sharesheet](https://github.com/tauri-apps/plugins-workspace/raw/v2/plugins/sharesheet/banner.png)
-
 Share content to other apps via the Android Sharesheet or iOS Share Pane.
 
 ## Install

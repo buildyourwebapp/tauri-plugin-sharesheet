@@ -1,6 +1,6 @@
 {
   "name": "@buildyourwebapp/tauri-plugin-sharesheet",
-  "version": "2.0.0-beta.7",
+  "version": "0.0.1",
   "license": "MIT or APACHE-2.0",
   "authors": [
     "Matt Gabrenya",

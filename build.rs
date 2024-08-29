@@ -10,4 +10,15 @@ fn main() {
         .android_path("android")
         .ios_path("ios")
         .build();
+
+    #[cfg(target_os = "macos")]
+    {
+        tauri_plugin::mobile::update_entitlements(|entitlements| {
+            entitlements.insert(
+                "com.apple.developer.group-session".into(),
+                true.into()
+            );
+        })
+        .expect("failed to update entitlements");
+    }
 }

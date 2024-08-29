@@ -7,9 +7,6 @@ import { invoke } from "@tauri-apps/api/core";
 export interface SharesheetOptions {
   // Android only
   mimeType?: string;
-
-  // Android & iOS
-  title?: string;
 }
 
 /**

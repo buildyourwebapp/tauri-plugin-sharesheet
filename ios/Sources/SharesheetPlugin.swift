@@ -7,11 +7,12 @@ import SwiftRs
 import Tauri
 import UIKit
 import WebKit
-
+import SwiftUI
+import UIKit
+import Foundation
 
 struct SharesheetOptions: Decodable {
   let text: String
-  let title: String?
 }
 
 class SharesheetPlugin: Plugin {
@@ -21,19 +22,11 @@ class SharesheetPlugin: Plugin {
   @objc func shareText(_ invoke: Invoke) throws {
     let args = try invoke.parseArgs(SharesheetOptions.self)
 
-    let content;
-    if args.text.hasPrefix("http://") || args.text.hasPrefix("https://") {
-      content = Url(args.text)
-    } else {
-      content = Text(args.text)
+    DispatchQueue.main.async {
+      let activityViewController = UIActivityViewController(activityItems: [args.text], applicationActivities: nil)
+      activityViewController.popoverPresentationController?.sourceView = self.manager.viewController?.view // display as a popover on ipad
+      self.manager.viewController?.present(activityViewController, animated: true, completion: nil)
     }
-
-    let title;
-    if args.title != nil {
-      title = Text(args.title)
-    }
-
-    ShareLink(item: content, message: title)
   }
 }
 

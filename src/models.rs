@@ -8,7 +8,6 @@ use serde::Serialize;
 #[serde(rename_all = "camelCase")]
 pub struct SharesheetOptions {
   pub mime_type: Option<String>,
-  pub title: Option<String>,
 }
 
 #[derive(Serialize)]

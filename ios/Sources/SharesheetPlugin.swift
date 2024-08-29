@@ -16,7 +16,9 @@ struct SharesheetOptions: Decodable {
 }
 
 class SharesheetPlugin: Plugin {
+  var webview: WKWebView!
   public override func load(webview: WKWebView) {
+    self.webview = webview
   }
 
   @objc func shareText(_ invoke: Invoke) throws {
@@ -24,7 +26,16 @@ class SharesheetPlugin: Plugin {
 
     DispatchQueue.main.async {
       let activityViewController = UIActivityViewController(activityItems: [args.text], applicationActivities: nil)
-      activityViewController.popoverPresentationController?.sourceView = self.manager.viewController?.view // display as a popover on ipad
+      
+      // Display as popover on iPad as required by apple
+      activityViewController.popoverPresentationController?.sourceView = self.webview // display as a popover on ipad
+      activityViewController.popoverPresentationController?.sourceRect = CGRect(
+        x: self.webview.bounds.midX,
+        y: self.webview.bounds.midY,
+        width: CGFloat(Float(0.0)),
+        height: CGFloat(Float(0.0))
+      )
+
       self.manager.viewController?.present(activityViewController, animated: true, completion: nil)
     }
   }
